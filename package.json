@@ -1,0 +1,27 @@
+{
+  "name": "services-bus-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.77",
+    "@types/node": "^8.0.47",
+    "@types/q": "^1.0.5",
+    "typescript": "^2.5.2"
+  },
+  "dependencies": {
+    "@labshare/services-bus": "https://github.com/LabShare/services-bus",
+    "app-root-dir": "^1.0.2",
+    "eventemitter2": "^4.1.2",
+    "lodash": "^4.14.77",
+    "moment": "^2.19.1",
+    "q": "^1.5.0",
+    "random-number": "0.0.9"
+  },
+  "author": "",
+  "license": "ISC"
+}
