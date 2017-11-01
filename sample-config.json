@@ -30,9 +30,10 @@
         "eventStore": {
             "redis": {
                 "host": "YOUR REDIS INSTANCE",
-                "port": 6379,
-                "defaultDomainPrefix": "CALCULATOR-REDIS"
-            },
+                "port": 6379
+            }
+            ,
+            "defaultDomainPrefix": "CALCULATOR-REDIS",
             "maxTime": 120,
             "isConcurrent":false
         }

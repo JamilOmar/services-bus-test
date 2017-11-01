@@ -30,14 +30,14 @@ let processQ = Q.async(function* () {
         //It will test the CQRS without Aggregates and Event's store
         case 'NOCQRS':
             while (i < 100) {
-                CQRS.ServiceLocator.Process.Instance.publishCommand(new CQRS.Models.Entities.Command('CalculatorCommand', 'sumNoAggregate', { a: random(options), b: random(options) }));
+                CQRS.ServiceLocator.Process.Instance.publishCommand(new CQRS.Models.Entities.Command('CalculatorCommand', 'sumNoAggregate', { a: random(options), b: random(options), id: i }));
                 i++;
             }
             break;
         //it will test the service bus only
         case 'BUS':
             while (i < 100) {
-                CQRS.ServiceLocator.Process.Instance.publishCommand(new CQRS.Models.Entities.Command('CalculatorCommand', 'message', { a: random(options), b: random(options) }));
+                CQRS.ServiceLocator.Process.Instance.publishCommand(new CQRS.Models.Entities.Command('CalculatorCommand', 'message', { a: random(options), b: random(options), id: i }));
                 i++;
             }
             break;
@@ -45,7 +45,7 @@ let processQ = Q.async(function* () {
         //It will test the CQRS process, no Query view added because the user can define any. 
         case 'CQRS':
             while (i < 100) {
-                CQRS.ServiceLocator.Process.Instance.publishCommand(new CQRS.Models.Entities.Command('CalculatorCommand', 'sum', { a: random(options), b: random(options) }));
+                CQRS.ServiceLocator.Process.Instance.publishCommand(new CQRS.Models.Entities.Command('CalculatorCommand', 'sum', { a: random(options), b: random(options), id: i }));
                 i++;
             }
             break;
@@ -57,7 +57,7 @@ let processQ = Q.async(function* () {
     }
 });
 processQ().then(() => {
-    console.log('completed');
+    console.log('Handlers loaded');
 }, Error => {
     console.log('Error', Error);
 });

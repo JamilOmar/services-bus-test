@@ -8,13 +8,13 @@ class Calculator extends services_bus_1.Models.Entities.Aggregate {
     constructor(id) {
         super(id);
     }
-    sum(a, b) {
+    sum(a, b, id) {
         let self = this;
         return new Promise((resolve, reject) => {
             //Simulate Interval;
             setInterval(() => {
                 // Calling event onSum and adding the machine name
-                self.apply('onSum', { a, b, c: a + b, machineName: config.calculator.name });
+                self.apply('onSum', { a, b, c: a + b, machineName: config.calculator.name, id });
                 resolve();
             }, 10000);
         });

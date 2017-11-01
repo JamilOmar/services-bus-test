@@ -24,7 +24,7 @@ class Calculator extends CQRS.Commands.CommandHandler {
                 console.log('onSum', data);
             });
             //performing the aggregate's method
-            yield aggregate.sum(data.a, data.b);
+            yield aggregate.sum(data.a, data.b, data.id);
             //saving the event at the event's storage
             yield self.store.saveEvents(aggregate, function (domainEvent) {
                 //send the result to the Event handler

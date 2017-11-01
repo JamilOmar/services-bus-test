@@ -12,14 +12,14 @@ export class Calculator extends Models.Entities.Aggregate {
     constructor(id?: string) {
         super(id);
     }
-    sum(a:number ,b:number): Promise<any>
+    sum(a:number ,b:number,id:number): Promise<any>
     {
         let self = this;
         return new Promise((resolve, reject) => {            
             //Simulate Interval;
             setInterval(() => {
                 // Calling event onSum and adding the machine name
-                self.apply('onSum',{a,b,c:a+b , machineName:config.calculator.name});
+                self.apply('onSum',{a,b,c:a+b , machineName:config.calculator.name ,id});
                 resolve();
             }, 10000);
         });
