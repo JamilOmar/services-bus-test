@@ -33,7 +33,8 @@
                 "port": 6379,
                 "defaultDomainPrefix": "CALCULATOR-REDIS"
             },
-            "maxTime": 120
+            "maxTime": 120,
+            "isConcurrent":false
         }
     },
     "calculator": {

@@ -1,14 +1,14 @@
 # Services-Bus-test 
 This is a complete test project for Service-Bus.
 
-You can see at the code and learn the different usa and its components.
+You can see the code and learn the different uses and its components.
 
 
 ## Test options 
-For set the TEST's environment variable with the following options:
+For setting the TEST's environment variable with the following options:
 
  ### TEST=CQRS
- Is the default test, It will test the entire CQRS Simulation with aggregates, events and Bus.
+ Is the default test, It will test the entire CQRS Simulation with aggregates, events, and Bus.
 ### TEST=NOCQRS
  It will test the  CQRS Simulation with events and Bus only.
 ### TEST=BUS
@@ -32,7 +32,9 @@ npm i
 ### Preparation
 - Create a config.json using sample-config.
 - Set the redis values for bus and for the eventStore.
-- Set the name inside the calulator property with your identifier (any name). This is for test the project acros multiple processes or machines.
+    - maxTime is how much the test data should be kept at Redis (only for eventStore).
+    - isConcurrent evaluate if the eventStore needs to validate concurrency if you are doing the test between multiple machines you need to set it to False otherwise true.
+- Set the name inside the calculator property with your identifier (any name). This is for test the project across multiple processes or machines.
 - Set the required type for each of the command and event's handlers:
   
 ```sh

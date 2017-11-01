@@ -71,3 +71,6 @@ lscservices.sh
 
 # Mac 
 .DS_Store
+
+# configuration
+config.json
