@@ -1,27 +1,26 @@
-import * as Q from 'q';
-import * as _ from 'lodash';
-import * as CQRS from '@labshare/services-bus'
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const CQRS = require("@labshare/services-bus");
 const ServicesCache = require('@labshare/services-cache').Cache;
-const config = require('../../config.json')
-export default class Calculator extends CQRS.Events.EventHandler<any> {
+const config = require('../../config.json');
+class Calculator extends CQRS.Events.EventHandler {
     constructor() {
         super();
         this.reportDatabase = new ServicesCache(config.sb.eventStore.redis, config.sb.eventStore.maxTime);
     }
     // method for simulate the CQRS process
-    onSum(data: CQRS.Models.Entities.DomainEvent): Promise<any> {
+    onSum(data) {
         return this.reportDatabase.saveObjectInList('calculator-storage', data.eventVersion, data.eventVersion, data).then(d => {
-                console.log('Received:', JSON.stringify(data));
-                return;
-            });
-
+            console.log('Received:', JSON.stringify(data));
+            return;
+        });
     }
     // method for simulate the CQRS without Aggregates and Event's store
-    onSumNoAggregate(data: any): Promise<any> {
+    onSumNoAggregate(data) {
         return new Promise((resolve, reject) => {
             console.log('Received:', JSON.stringify(data));
             resolve();
         });
     }
-
 }
+exports.default = Calculator;

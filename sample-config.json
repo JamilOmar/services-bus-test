@@ -1,0 +1,42 @@
+{
+    "sb": {
+        "commandHandlers": [{
+            "name": "CalculatorCommand",
+            "path": "**/commandHandlers/calculator.*",
+            "type" : 0
+        },
+        {
+            "name": "ResultCommand",
+            "path": "**/commandHandlers/result.*",
+            "type" : 0
+        }],
+        "eventHandlers": [{
+            "name": "CalculatorEvent",
+            "path": "**/eventHandlers/calculator.*",
+            "type" : 0
+        }],
+        "reportHandlers": [{
+            "name": "Report",
+            "path": "**/reportHandlers/result.*",
+            "type" : 0
+        }],
+        "bus": {
+            "defaultDomainPrefix": "CALCULATOR-BUS",
+            "redis": {
+                "host": "YOUR REDIS INSTANCE",
+                "port": 6379
+            }
+        },
+        "eventStore": {
+            "redis": {
+                "host": "YOUR REDIS INSTANCE",
+                "port": 6379,
+                "defaultDomainPrefix": "CALCULATOR-REDIS"
+            },
+            "maxTime": 120
+        }
+    },
+    "calculator": {
+        "name": "DEMO MACHINE NAME"
+    }
+}

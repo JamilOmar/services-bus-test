@@ -21,7 +21,7 @@ export class Calculator extends Models.Entities.Aggregate {
                 // Calling event onSum and adding the machine name
                 self.apply('onSum',{a,b,c:a+b , machineName:config.calculator.name});
                 resolve();
-            }, 2000);
+            }, 10000);
         });
     }
 }

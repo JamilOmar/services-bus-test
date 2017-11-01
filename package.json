@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@labshare/services-bus": "https://github.com/LabShare/services-bus",
+    "@labshare/services-cache": "https://github.com/LabShare/services-cache",
     "app-root-dir": "^1.0.2",
     "eventemitter2": "^4.1.2",
     "lodash": "^4.14.77",

@@ -32,7 +32,7 @@ let processQ = Q.async(function* () {
         //It will test the CQRS without Aggregates and Event's store
         case 'NOCQRS':
         while (i < 100) {
-            CQRS.ServiceLocator.Process.Instance.publishCommand(new CQRS.Models.Entities.Command('CalculatorCommand', 'onSumNoAggregate', { a: random(options), b: random(options) }));
+            CQRS.ServiceLocator.Process.Instance.publishCommand(new CQRS.Models.Entities.Command('CalculatorCommand', 'sumNoAggregate', { a: random(options), b: random(options) }));
             i++;
         }
         break;
@@ -52,6 +52,11 @@ let processQ = Q.async(function* () {
             i++;
         }
         break;
+         //It will test the Query to the Report's storage, it is required to run CQRS first.
+         case 'REPORT':
+             let data =yield CQRS.ServiceLocator.Process.Instance.query(new CQRS.Models.Entities.ReportCommand('Report', 'result', { id:'test' }))
+             console.log(data);
+         break;
     }
  
     

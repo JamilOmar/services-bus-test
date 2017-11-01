@@ -63,7 +63,7 @@ typings/
 # Releases
 apps
 release
-dist
+
 
 # Docker settings
 services.yml
