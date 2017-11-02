@@ -32,7 +32,7 @@ npm i
 ### Preparation
 - Create a config.json using sample-config.
 - Set the redis values for bus and for the eventStore.
-    - maxTime is how much the test data should be kept at Redis (only for eventStore).
+    - maxTime is how much time (in seconds) the test data should be kept at Redis (only for eventStore).
     - isConcurrent evaluate if the eventStore needs to validate concurrency if you are doing the test between multiple machines you need to set it to False otherwise true.
 - Set the name inside the calculator property with your identifier (any name). This is for test the project across multiple processes or machines.
 - Set the required type for each of the command and event's handlers:

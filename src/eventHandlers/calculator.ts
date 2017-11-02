@@ -10,6 +10,7 @@ export default class Calculator extends CQRS.Events.EventHandler<any> {
     }
     // method for simulate the CQRS process
     onSum(data: CQRS.Models.Entities.DomainEvent): Promise<any> {
+        /// Storing the data in the reportdatabase
         return this.reportDatabase.saveObjectInList('calculator-storage', data.eventVersion, data.eventVersion, data).then(d => {
                 console.log('Received:', JSON.stringify(data));
                 return;

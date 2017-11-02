@@ -17,8 +17,7 @@
         }],
         "reportHandlers": [{
             "name": "Report",
-            "path": "**/reportHandlers/result.*",
-            "type" : 0
+            "path": "**/reportHandlers/result.*"
         }],
         "bus": {
             "defaultDomainPrefix": "CALCULATOR-BUS",

@@ -11,7 +11,7 @@ export default class Result extends CQRS.Reporting.ReportHandler<any> {
         this.reportDatabase = new ServicesCache(config.sb.eventStore.redis, config.sb.eventStore.maxTime);
         
     }
-     // method for only test the bus
+     // method for test
     result(data: any): Promise<any> {
         return  this.reportDatabase.getAllObjectsList('calculator-storage').
         then(d=>{

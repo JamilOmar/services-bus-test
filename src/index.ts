@@ -16,15 +16,18 @@ let processQ = Q.async(function* () {
     //load the singleton object
     yield CQRS.ServiceLocator.Process.Instance.load();
     //setting the Process events.
-    CQRS.ServiceLocator.Process.Instance.onEvent("channelError", (x: any) => {
+    //when there is an error in the channel
+    CQRS.ServiceLocator.Process.Instance.onEvent(CQRS.Common.Constants.Events.CHANNEL_ERROR, (x: any) => {
         console.log('channelError', x);
 
     })
-    CQRS.ServiceLocator.Process.Instance.onEvent("channelError", (x: any) => {
-        console.log('channelError', x);
+    //when there is an error in the connection
+    CQRS.ServiceLocator.Process.Instance.onEvent(CQRS.Common.Constants.Events.CONNECTION_ERROR, (x: any) => {
+        console.log('connectionError', x);
 
     })
-    CQRS.ServiceLocator.Process.Instance.onEvent("messageProcessed", (x: any) => {
+    //when the message is processed (only consumer)
+    CQRS.ServiceLocator.Process.Instance.onEvent(CQRS.Common.Constants.Events.MESSAGE_PROCESSED, (x: any) => {
         console.log('Message Processed')
     })
     let i = 0;
@@ -54,6 +57,11 @@ let processQ = Q.async(function* () {
         break;
          //It will test the Query to the Report's storage, it is required to run CQRS first.
          case 'REPORT':
+           
+            //Query a report
+            //ReportCommand.name : The name of the report Handler (Report)
+            //ReportCommand.method : The name of the method to be invoked (result)
+            //ReportCommand.command : The command or object to be sent (data)
              let data =yield CQRS.ServiceLocator.Process.Instance.query(new CQRS.Models.Entities.ReportCommand('Report', 'result', { id:'test' }))
              console.log(data);
          break;
